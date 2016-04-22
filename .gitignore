@@ -1,12 +1,17 @@
 #include <iostream>
 #include <cmath>
+#include <limits>
 
 using namespace std;
 
-int dot_product (int lista1[],int lista2[]){
+int dot_product (int lista1[],int lista2[],int size1, int size2){
   float suma=0;
-  for (int i=0;i<=2;i++){
-    suma= suma + lista1[i] * lista2[i];
+  if(size1 != size2){
+      return numeric_limits<double>::quiet_NaN();
+  } else {
+    for (int i=0;i<size1;i++){
+      suma= suma + lista1[i] * lista2[i];
+    }
   }
   return suma;
 }
@@ -17,11 +22,10 @@ int main(){
     cout<<"dime el numero de lista1, posicion "<<i<<": "<<endl;
     cin>>lista1[i];
   }
-  for (int i=0;i<=2;i++){
+  for (int i=0;i<=3;i++){
     cout<<"dime el numero de lista2, posicion "<<i<<": "<<endl;
     cin>> lista2[i];
   }
-  cout<<dot_product(lista1,lista2)<<endl;
+  cout<<dot_product(lista1,lista2,3,4)<<endl;
   return 0;
 }
-
